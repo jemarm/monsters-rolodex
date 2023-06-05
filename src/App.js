@@ -8,7 +8,7 @@ const App = () => {
   const [monsters, setMonsters] = useState([]);
   const [filteredMonsters, setFilterMonsters] = useState(monsters);
 
-  console.log("render");
+  console.log("rendered");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -21,22 +21,17 @@ const App = () => {
       return monster.name.toLowerCase().includes(searchField);
     });
 
-    setFilterMonsters(newFilteredMonsters)
-    
-    console.log('effect is firing')
+    setFilterMonsters(newFilteredMonsters);
   }, [monsters, searchField]);
-  
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
     setSearchField(searchFieldString);
   };
 
-  console.log(filteredMonsters);
-
   return (
     <div className="App">
-      <h1 className="app-title"> Monsters Rolodex</h1>
+      <h1 className="app-title">Monsters Rolodex</h1>
       <SearchBox
         className="monsters search-box"
         onChangeHandler={onSearchChange}
